@@ -1,21 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { AppNavigator } from './routes/AppNavigator';
 import Home from './Screens/Home';
+import ReviewDetails from './Screens/ReviewDetails';
 
-const App = () => {
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
+
+export default function App() {
 	return(
-		<View style={styles.container}>
-			<AppNavigator />
-			<StatusBar />
-		</View>
+		<NavigationContainer>
+			<Stack.Navigator initialRouteName="Home">
+				<Stack.Screen name="Home" component={Home} />
+				<Stack.Screen name="Details" component={ReviewDetails} />
+			</Stack.Navigator>
+    	</NavigationContainer>
 	)
 }
-export default App;
-
-const styles = StyleSheet.create({
-	container: {
-		padding: 20,
-	}
-});

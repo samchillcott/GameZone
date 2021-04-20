@@ -1,7 +1,6 @@
  import React from 'react'
 import { Text, View } from 'react-native'
-import {globalStyles} from './styles/global'
-
+import { globalStyles } from './styles/global'
 
 const About = () => {
     return (
