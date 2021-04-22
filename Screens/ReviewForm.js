@@ -1,7 +1,7 @@
 import React from 'react'
 import * as yup from 'yup'
 import {Formik} from 'formik'
-import { StyleSheet, View, TextInput, Button } from 'react-native'
+import { StyleSheet, View, Text, TextInput, Button } from 'react-native'
 
 import {globalStyles} from './styles/global'
 
@@ -27,28 +27,34 @@ const ReviewForm = ({addReview}) => {
                     addReview(values);
                 }}
             >
-                {({handleChange, handleSubmit, values}) => (
+                {({handleChange, handleSubmit, handleBlur, values, errors, touched}) => (
                     <View>
                         <TextInput
                             style={globalStyles.input}
                             placeholder="Review title"
                             onChangeText={handleChange('title')}
+                            onBlur={handleBlur('title')}
                             value={values.title}
                         />
+                        <Text style={globalStyles.errorText}>{touched.title && errors.title}</Text>
                         <TextInput
                             multiline
                             style={globalStyles.input}
                             placeholder="Review body"
                             onChangeText={handleChange('body')}
+                            onBlur={handleBlur('body')}
                             value={values.body}
                         />
+                        <Text style={globalStyles.errorText}>{touched.body && errors.body}</Text>
                         <TextInput
                             style={globalStyles.input}
                             placeholder="Rating (1-5)"
                             onChangeText={handleChange('rating')}
+                            onBlur={handleBlur('rating')}
                             value={values.rating}
                             keyboardType='numeric'
                         />
+                        <Text style={globalStyles.errorText}>{touched.rating && errors.rating}</Text>
                         <Button
                             title='submit'
                             color="maroon"
