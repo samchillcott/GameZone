@@ -1,40 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import Home from './Screens/Home';
-import ReviewDetails from './Screens/ReviewDetails';
 
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-const Stack = createStackNavigator();
+import Header from './shared/Header';
+import HomeStack from './Screens/routes/HomeStack';
+import AboutStack from './Screens/routes/AboutStack';
+
+const Drawer = createDrawerNavigator();
 
 export default function App() {
 	return(
 		<NavigationContainer>
-			<Stack.Navigator
-				initialRouteName="Home"
-				screenOptions={{
-					headerStyle: {
-						backgroundColor: '#eee',
-					},
-					headerTintColor: 'black',
-					headerTitleStyle: {
-						fontWeight: 'bold',
-					},
-				}}
-			>
-				<Stack.Screen
-					name="Home"
-					component={Home}
-					options={{title: "Game Zone"}}
-					/>
-				<Stack.Screen
-					name="ReviewDetails"
-					component={ReviewDetails}
-					options={{title: "Review Details"}}
-				/>
-			</Stack.Navigator>
+			<Drawer.Navigator initialRouteName="Home">
+				<Drawer.Screen name="Home" component={HomeStack} />
+				<Drawer.Screen name="About" component={AboutStack} />
+      		</Drawer.Navigator>
+			<StatusBar/>
     	</NavigationContainer>
 	)
 }
