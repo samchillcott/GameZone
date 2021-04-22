@@ -3,8 +3,8 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from '../Home';
-import ReviewDetails from '../ReviewDetails';
 import Header from '../../shared/Header';
+import ReviewDetails from '../ReviewDetails';
 
 export default function HomeStack() {
     const Stack = createStackNavigator();
@@ -24,7 +24,11 @@ export default function HomeStack() {
             <Stack.Screen
                 name="Home"
                 component={Home}
-                options={{headerTitle: () => <Header />}}
+                options={({navigation}) => {
+                    return(
+                        {headerTitle: () => <Header navigation={navigation} title={'GameZone'}/>}
+                    )
+                }}
                 />
             <Stack.Screen
                 name="ReviewDetails"

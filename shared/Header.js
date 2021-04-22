@@ -2,10 +2,10 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 
-const Header = () => {
+const Header = ({ navigation, title }) => {
 
     const pressHandler = () => {
-
+        navigation.openDrawer();
     }
 
     return (
@@ -13,7 +13,7 @@ const Header = () => {
             <MaterialIcons name="menu" size={28} onPress={pressHandler} style={styles.icon}/>
             <View >
                 <Text style={styles.headerText}>
-                    Game Zone
+                    {title}
                 </Text>
             </View>
         </View>

@@ -4,7 +4,6 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import Header from './shared/Header';
 import HomeStack from './Screens/routes/HomeStack';
 import AboutStack from './Screens/routes/AboutStack';
 
