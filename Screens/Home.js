@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { MaterialIcons } from '@expo/vector-icons'
-import { FlatList } from 'react-native-gesture-handler';
-import { Modal, Text, TouchableOpacity, View, StyleSheet } from 'react-native'
+import { FlatList, TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { Modal, Text, TouchableOpacity, View, StyleSheet, TouchableWithoutFeedbackComponent } from 'react-native'
 
 import Card from '../shared/Card';
 import { globalStyles } from './styles/global'
@@ -15,6 +15,14 @@ const Home = ({ navigation }) => {
     { title: 'Not So "Final" Fantasy', rating: 3, body: 'lorem ipsum', key: '3' },
   ]);
 
+    const addReview = (review) => {
+        review.key = Math.random().toString
+        setReviews((currentReviews) => {
+            return [review, ...currentReviews]
+        });
+        setModalOpen(false)
+    }
+
     return (
         <View style={globalStyles.container}>
             <Modal visible={modalOpen} animationType="slide">
@@ -25,7 +33,7 @@ const Home = ({ navigation }) => {
                         style={{...styles.modalToggle, ...styles.modalClose}}
                         onPress={() => setModalOpen(false)}
                     />
-                    <ReviewForm />
+                    <ReviewForm addReview={addReview}/>
                 </View>
             </Modal>
             <MaterialIcons

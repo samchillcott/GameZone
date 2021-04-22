@@ -1,10 +1,19 @@
 import React from 'react'
+import * as yup from 'yup'
 import {Formik} from 'formik'
 import { StyleSheet, View, TextInput, Button } from 'react-native'
 
 import {globalStyles} from './styles/global'
 
-const ReviewForm = () => {
+const ReviewSchema = yup.object({
+    title: yup.string().required().min(4),
+    body: yup.string().required().min(8),
+    rating: yup.string().required().test('is-num-1-5', "Rating must be a number 1-5", (val) => {
+        return parseInt(val) < 6 && parseInt(val) > 0
+    })
+})
+
+const ReviewForm = ({addReview}) => {
     return (
         <View style={globalStyles.container}>
             <Formik
@@ -13,9 +22,10 @@ const ReviewForm = () => {
                     body: '',
                     rating: '',
                 }}
+                validationSchema={ReviewSchema}
                 onSubmit={(values) => {
-                    console.log(values);
-                } }
+                    addReview(values);
+                }}
             >
                 {({handleChange, handleSubmit, values}) => (
                     <View>
@@ -37,6 +47,7 @@ const ReviewForm = () => {
                             placeholder="Rating (1-5)"
                             onChangeText={handleChange('rating')}
                             value={values.rating}
+                            keyboardType='numeric'
                         />
                         <Button
                             title='submit'
