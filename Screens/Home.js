@@ -5,6 +5,7 @@ import { Modal, Text, TouchableOpacity, View, StyleSheet } from 'react-native'
 
 import Card from '../shared/Card';
 import { globalStyles } from './styles/global'
+import ReviewForm from './ReviewForm';
 
 const Home = ({ navigation }) => {
     const [modalOpen, setModalOpen] = useState(false)
@@ -24,7 +25,7 @@ const Home = ({ navigation }) => {
                         style={{...styles.modalToggle, ...styles.modalClose}}
                         onPress={() => setModalOpen(false)}
                     />
-                    <Text>Hello from modal</Text>
+                    <ReviewForm />
                 </View>
             </Modal>
             <MaterialIcons
