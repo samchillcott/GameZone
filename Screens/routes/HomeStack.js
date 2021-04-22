@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from '../Home';
 import Header from '../../shared/Header';
+import HeaderBG from '../../shared/HeaderBG';
 import ReviewDetails from '../ReviewDetails';
 
 export default function HomeStack() {
@@ -26,7 +27,9 @@ export default function HomeStack() {
                 component={Home}
                 options={({navigation}) => {
                     return(
-                        {headerTitle: () => <Header navigation={navigation} title={'GameZone'}/>}
+                        {headerTitle: () => <Header navigation={navigation} title={'GameZone'}/>,
+                        headerBackground: () => <HeaderBG/>
+                        }
                     )
                 }}
                 />

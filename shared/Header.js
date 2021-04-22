@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 
 const Header = ({ navigation, title }) => {
@@ -9,14 +9,21 @@ const Header = ({ navigation, title }) => {
     }
 
     return (
-        <View style={styles.header}>
-            <MaterialIcons name="menu" size={28} onPress={pressHandler} style={styles.icon}/>
-            <View >
+        <ImageBackground
+            style={styles.header}
+            source={require('../assets/game_bg.png')}
+        >
+            <MaterialIcons name="menu" size={36} onPress={pressHandler} style={styles.icon}/>
+            <View style={styles.headerTitle}>
+                <Image
+                    source={require('../assets/heart_logo.png')}
+                    style={styles.headerImage}
+                />
                 <Text style={styles.headerText}>
                     {title}
                 </Text>
             </View>
-        </View>
+        </ImageBackground>
     )
 }
 
@@ -38,6 +45,14 @@ const styles = StyleSheet.create({
     },
     icon: {
         position: 'absolute',
-        left: 16,
-    }
+        left: -60,
+    },
+    headerTitle: {
+        flexDirection: 'row',
+    },
+    headerImage: {
+        width: 26,
+        height: 26,
+        marginHorizontal: 10,
+    },
 })
