@@ -3,8 +3,8 @@ import { StyleSheet, ImageBackground, } from 'react-native';
 
 export default function HeaderBG() {
     return(
-        <ImageBackground source={ require('../assets/game_bg.png')} style={ styles.container }>
-
+        <ImageBackground
+            source={ require('../assets/game_bg.png')} style={ styles.container }>
         </ImageBackground>
     )
 }
@@ -14,5 +14,6 @@ const styles = StyleSheet.create({
         flex: 1,
         elevation: 3,
         borderRadius: 1,
+        resizeMode: 'cover'
     },
 })

@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     },
     icon: {
         position: 'absolute',
-        left: -60,
+        left: -40,
     },
     headerTitle: {
         flexDirection: 'row',
