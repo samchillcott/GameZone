@@ -38,7 +38,7 @@ const ReviewForm = ({addReview}) => {
                         />
                         <Text style={globalStyles.errorText}>{touched.title && errors.title}</Text>
                         <TextInput
-                            multiline
+                            multiline minHeight={60}
                             style={globalStyles.input}
                             placeholder="Review body"
                             onChangeText={handleChange('body')}
